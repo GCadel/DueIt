@@ -12,10 +12,10 @@ an `x` between the brackets.
 - [ ] Read and understand all required features
   - [ ] Understand you **must** implement **all** baseline features and **two**
         custom features
-- [ ] In `readme.md`: update app name to your app's name
+- [x] In `readme.md`: update app name to your app's name
 - [x] In `readme.md`: add all group members' names
-- [ ] In `readme.md`: complete the **Description and Purpose** section
-- [ ] In `readme.md`: complete the **Inspiration** section
+- [x] In `readme.md`: complete the **Description and Purpose** section
+- [x] In `readme.md`: complete the **Inspiration** section
 - [ ] In `readme.md`: list a name and description for all features (minimum 6
       for full points) you intend to include in your app (in future units, you
       will check off features as you complete them and add GIFs demonstrating
@@ -31,12 +31,12 @@ an `x` between the brackets.
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+<!-- [👉🏾👉🏾👉🏾 your answer here] -->
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+<!-- [👉🏾👉🏾👉🏾 your answer here] -->
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+<!-- [👉🏾👉🏾👉🏾 your answer here] -->
