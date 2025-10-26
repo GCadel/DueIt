@@ -24,8 +24,8 @@ an `x` between the brackets.
       points)
 - [ ] In `planning/user_stories.md`: use 1-3 unique user roles in your user
       stories
-- [ ] In this document, complete all thre questions in the **Reflection**
-      section below
+- [ ] In this document, complete all the questions in the **Reflection** section
+      below
 
 ## Reflection
 
