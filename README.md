@@ -31,6 +31,13 @@ Backend:
 - PostgreSQL
 
 ## Features
+- Color Coded - Users can quickly see a task's priority by its color
+- Secure Board Assignment - Admins can provide codes to users to ensure they access only the board(s)
+  to which they've been assigned
+- Task Metrics - Users can see statistics on on-time task completion, and Admins can see statistics on entire teams
+- HELP WANTED Flag - Users can flag their tasks when they need some extra help to complete it
+- Task History - Users can see the history of who's been assigned and unassigned from a task
+- Quick Tasks - Users can add a quick task on the board if don't have time to write down the full details yet
 
 ### User Accounts
 
