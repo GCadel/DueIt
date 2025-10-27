@@ -31,29 +31,48 @@ Backend:
 - PostgreSQL
 
 ## Features
-- Color Coded - Users can quickly see a task's priority by its color
-- Secure Board Assignment - Admins can provide codes to users to ensure they access only the board(s)
-  to which they've been assigned
-- Task Metrics - Users can see statistics on on-time task completion, and Admins can see statistics on entire teams
-- HELP WANTED Flag - Users can flag their tasks when they need some extra help to complete it
-- Task History - Users can see the history of who's been assigned and unassigned from a task
-- Quick Tasks - Users can add a quick task on the board if don't have time to write down the full details yet
+
+### Task History
+
+Users can view the history of a task, including things like who has been
+assigned and unassigned from a task.
+
+<!-- [gif goes here] -->
+
+### Task Metrics
+
+Users can see statistics on on-time task completion, and board admins may view
+statistics for entire teams.
+
+<!-- [gif goes here] -->
+
+### Color-Coded Task Organization
+
+Tasks can be color coded to help users quickly determine a task's priority based
+on its color.
+
+<!-- [gif goes here] -->
+
+### Help Wanted Flag
+
+Users can flag their tasks when they need extra help to complete it.
+
+<!-- [gif goes here] -->
 
 ### User Accounts
 
 A user is able to sign into **DueIt** using a sign up code that allows the user
-to enroll into their team's task management board. Only users who have signed up
-with the code can access the associated code's board (e.g. signing up with the
-board code for the HR department will allow the user to access the HR department
-board).
+to enroll into their team's task management board. Only board admins are able to
+provide these sign-up codes to keep the boards secured and available for
+authorized users.
 
 <!-- [gif goes here] -->
 
-### Task Creation and Organization
+### Task Creation
 
 A user is able to create a task that anyone in their board team can view. Any of
 the members can assign themselves to the task, as well as move the task into
-different lifetime stages (e.g. New, In Progress, Complete)
+different lifetime stages (e.g. New, In Progress, Complete).
 
 <!-- [gif goes here] -->
 
@@ -64,8 +83,6 @@ on screen. This includes the ability to create quick task, navigate to their
 assigned tasks, and view the task board summary.
 
 <!-- [gif goes here] -->
-
-<!-- ### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them] -->
 
 ## Installation Instructions
 
