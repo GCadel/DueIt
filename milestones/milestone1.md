@@ -24,19 +24,19 @@ an `x` between the brackets.
       points)
 - [x] In `planning/user_stories.md`: use 1-3 unique user roles in your user
       stories
-- [ ] In this document, complete all the questions in the **Reflection** section
+- [x] In this document, complete all the questions in the **Reflection** section
       below
 
 ## Reflection
 
 ### 1. What went well during this unit?
 
-<!-- [👉🏾👉🏾👉🏾 your answer here] -->
+Brainstorming process, requirements writeup.
 
 ### 2. What were some challenges your group faced in this unit?
 
-<!-- [👉🏾👉🏾👉🏾 your answer here] -->
+GitHub collaboration, as it is unfamiliar to some members.
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-<!-- [👉🏾👉🏾👉🏾 your answer here] -->
+N/A
