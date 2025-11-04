@@ -1,21 +1,42 @@
 # Wireframes
 
-Reference the Creating an Entity Relationship Diagram final project guide in the course portal for more information about how to complete this deliverable.
+This is a list of high-fidelity wireframes for a couple of pages of the
+application. Pages with example wireframes are marked with '⭐' in the title.
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+## Wireframe 1: Task Dashboard ⭐
 
-## Wireframe 1: [page title]
+<img src="./task_list_preview.png" alt="Task dashboard page">
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+## Wireframe 2: Navigation Overlay ⭐
 
-## Wireframe 2: [page title]
+<img src="./task_list_nav_overlay_preview.png" alt="Task dashboard page with navigation overlay">
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+## Wireframe 3: Project Summary Page ⭐
 
-## Wireframe 3: [page title]
+<img src="./summary_preview.png" alt="Task summary page">
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+## Wireframe 4: New Task Form ⭐
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+<img src="./new_task_form.png" alt="New task form">
+
+## Wireframe 5: Task Detailed View ⭐
+
+<img src="./task_details.png" alt="Task detailed view page">
+
+## Wireframe 6: User Signup Form
+
+Where a user would create an account via signup form.
+
+## Wireframe 7: User Login Form
+
+Where a user would login using existing credentials.
+
+## Wireframe 8: Application Landing Page
+
+Where all users would go when not logged into the application.
+
+## Wireframe 9: Task Detail Edit form
+
+Where users would edit details of an existing task.
