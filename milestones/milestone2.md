@@ -16,10 +16,10 @@ an `x` between the brackets.
       diagram you developed for your database.
   - [x] Your entity relationship diagram should include the tables in your
         database.
-- [ ] Prepare your three-minute pitch presentation, to be presented during Unit
+- [x] Prepare your three-minute pitch presentation, to be presented during Unit
       7 (the next unit).
-  - [ ] You do **not** need to submit any materials in advance of your pitch.
-- [ ] In this document, complete all three questions in the **Reflection**
+  - [x] You do **not** need to submit any materials in advance of your pitch.
+- [x] In this document, complete all three questions in the **Reflection**
       section below
 
 ## Reflection
