@@ -1,29 +1,57 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
+
+  const closeNav = () => setNavOpen(false);
   return (
-    <header>
-      <p>DueIt</p>
+    <header className='navbar'>
+      <p className='app-title'>DueIt</p>
       {navOpen ? (
-        <div className='sidebar'>
-          <nav>
-            <div className='justify-apart'>
-              <div className='username'>
-                <img
-                  src='#'
-                  alt='User Avatar'
-                />
-                <span>Username</span>
+        <div className='overlay'>
+          <div className='sidebar'>
+            <nav>
+              <div className='justify-apart'>
+                <div className='username'>
+                  <img
+                    src='#'
+                    alt='User Avatar'
+                  />
+                  <span>Username</span>
+                </div>
+                <button onClick={closeNav}>Close</button>
               </div>
-              <button onClick={() => setNavOpen(false)}>Close</button>
-            </div>
-            <ul>
-              <li>
-                <a href='#'>Summary</a>
-              </li>
-            </ul>
-          </nav>
+              <p className='board-title'>Project Board Name</p>
+              <ul>
+                <li>
+                  <Link
+                    to={"/summary"}
+                    onClick={closeNav}
+                  >
+                    Summary
+                  </Link>
+                </li>
+                <li>
+                  {" "}
+                  <Link
+                    to={"/members"}
+                    onClick={closeNav}
+                  >
+                    Members
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/tasks"}
+                    onClick={closeNav}
+                  >
+                    Tasks
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       ) : (
         <button onClick={() => setNavOpen(true)}>Open</button>
