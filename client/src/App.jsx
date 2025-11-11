@@ -4,6 +4,10 @@ import LandingPage from "./pages/LandingPage";
 import { LoginPage } from "./pages/LoginPage";
 import { SignupPage } from "./pages/SignupPage";
 import { CreateTaskPage } from "./pages/CreateTaskPage";
+import SummaryPage from "./pages/SummaryPage";
+import { MembersPage } from "./pages/MembersPage";
+import { TasksPage } from "./pages/TasksPage";
+import "./App.css";
 
 function App() {
   return (
@@ -24,6 +28,18 @@ function App() {
         <Route
           path='/create-task'
           element={<CreateTaskPage />}
+        />
+        <Route
+          path='/summary'
+          element={<SummaryPage />}
+        />
+        <Route
+          path='/members'
+          element={<MembersPage />}
+        />
+        <Route
+          path='/tasks'
+          element={<TasksPage />}
         />
       </Routes>
     </Layout>
