@@ -21,14 +21,14 @@ portal for more information about how to complete each of these steps.
 - [x] In your repo, update the status of issues in your project board.
 - [x] In your repo, create a GitHub Milestone for each final project unit,
       corresponding to each of the 5 milestones in your `milestones/` directory.
-  - [ ] Set the completion percentage of each milestone. The GitHub Milestone
+  - [x] Set the completion percentage of each milestone. The GitHub Milestone
         for this unit (Milestone 3 - Unit 7) should be 100% completed when you
         submit for full points.
-- [ ] In `readme.md`, check off the features you have completed in this unit by
+- [x] In `readme.md`, check off the features you have completed in this unit by
       adding a ✅ emoji in front of the feature's name.
-  - [ ] Under each feature you have completed, include a GIF showing feature
+  - [x] Under each feature you have completed, include a GIF showing feature
         functionality.
-- [ ] In this documents, complete all five questions in the **Reflection**
+- [x] In this documents, complete all five questions in the **Reflection**
       section below.
 
 ## Reflection
@@ -45,11 +45,11 @@ Several members are traveling, limiting project productivity.
 
 Due to member travel, not all tasks were completed for this week. Tasks should
 now be prioritized for features that allow the project to meet the minimum
-viable product status.
+viable product status. Main tasks outlined in README.md are not yet implemented, so no GIFs are available. 
 
 ### Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
 
-[👉🏾👉🏾👉🏾 your answer here]
+Currenty, all features may be considered at risk due to contstrained timelines and limited member availability. Asd mentioned above, tasks will be reprioritized for Milestone 4.
 
 ### 5. What additional support will you need in upcoming units as you continue to work on your final project?
 
