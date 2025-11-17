@@ -67,7 +67,7 @@ const updatePermission = async (req, res) => {
       name=$1, 
       description=$2, 
     WHERE id=$3`;
-    const values = [data.first_name, data.description, data.id];
+    const values = [data.name, data.description, data.id];
 
     const result = await pool.query(updateQuery, values);
     res.status(200).json(result.rows);
