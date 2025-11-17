@@ -43,7 +43,6 @@ const deleteUserById = async (req, res) => {
 
 const createUser = async (req, res) => {
   const data = req.body;
-  console.log(data);
   try {
     const insertQuery = `
     INSERT INTO users(first_name, last_name, email, password_hash, role_id)
@@ -65,7 +64,6 @@ const createUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   const data = req.body;
-  console.log(data);
   try {
     const updateQuery = `
     UPDATE USERS
