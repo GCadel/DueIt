@@ -4,10 +4,9 @@
   "description": "",
   "type":"module",
   "main": "server.js",
-  "scripts": {
-    "reset": "node ./config/reset.js",
-    "start": "nodemon server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+"scripts": {
+    "reset": "node --env-file=config/.env.local config/reset.js",
+    "start": "nodemon --env-file=config/.env.local server.js"
   },
   "author": "",
   "license": "ISC",
