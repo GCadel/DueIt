@@ -5,9 +5,8 @@
   "type":"module",
   "main": "server.js",
   "scripts": {
-    "reset": "node ./config/reset.js",
-    "start": "nodemon server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "reset": "node --env-file=../.env config/reset.js",
+    "start": "npm run reset && nodemon --env-file=../.env server.js"
   },
   "author": "",
   "license": "ISC",
