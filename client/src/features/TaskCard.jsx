@@ -1,6 +1,19 @@
+import { useDraggable } from "@dnd-kit/core";
+import { CSS } from "@dnd-kit/utilities";
+
 export const TaskCard = ({ taskData, user }) => {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id: taskData.id,
+    data: taskData,
+  });
+
   return (
-    <div>
+    <div
+      ref={setNodeRef}
+      {...listeners}
+      {...attributes}
+      style={{ transform: CSS.Translate.toString(transform) }}
+    >
       <CardContent
         taskData={taskData}
         user={user}
@@ -24,9 +37,10 @@ const CardContent = ({ taskData, user }) => {
             <span style={{ color: "red" }}>Unassigned</span>
           )}
         </div>
-        <div className='category-chip'>
-          {taskData.category ? taskData.category : ""}
-        </div>
+
+        {taskData.category ? (
+          <div className='category-chip'>taskData.category</div>
+        ) : null}
       </div>
       <div className='task-update-date'>
         <em>
