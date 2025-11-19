@@ -1,49 +1,63 @@
 import { useEffect, useState } from "react";
 import { TaskCard } from "../features/TaskCard";
 import { TaskList } from "../features/TaskList";
+import TasksAPI from "../services/TasksAPI";
+import UsersAPI from "../services/UsersAPI";
 
 export const TasksPage = () => {
 
-  const exampleData1 = [
-    {
-      id: 2,
-      title: "Task 02",
-      last_update: new Date().toDateString(),
-      category: "category a",
-      user: "John",
-    },
-    {
-      id: 3,
-      title: "Task 03",
-      last_update: new Date().toDateString(),
-      category: "category b",
-      user: "Mike",
-    },
-  ];
+  const [tasks, setTasks] = useState([]);
+  const [users, setUsers] = useState({});
 
-  const exampleData2 = [
-    {
-      id: 1,
-      title: "Task 01",
-      last_update: new Date().toDateString(),
-      category: "category b",
-      user: null,
-    },
-  ];
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const data = await TasksAPI.getAllTasks();
+      setTasks(data)
+    }
+
+    const fetchUsers = async () => {
+      const userArray = await UsersAPI.getAllUsers();
+      const userMap = {};
+      userArray.forEach(u => {
+        userMap[u.id] = u.first_name + ' ' + u.last_name;
+      });
+
+      setUsers(userMap);
+    }
+
+    fetchTasks();
+    fetchUsers();
+  }, [])
+
+  const backlogTasks = tasks.filter(task => task.status_id === 1)
+  const inProgressTasks = tasks.filter(task => task.status_id === 2)
+  const reviewTasks = tasks.filter(task => task.status_id === 3)
+  const completeTasks = tasks.filter(task => task.status_id === 4)
+
   return (
     <>
       <h1>Tasks</h1>
       <div className='task-categories-grid'>
         <TaskList
           title={"Backlog"}
-          data={exampleData1}
+          data={backlogTasks}
+          users={users}
         />
-        <TaskList title={"In Progress"} />
-        <TaskList title={"Review"} />
+        <TaskList 
+          title={"In Progress"} 
+          data={inProgressTasks}
+          users={users}
+        />
+        <TaskList 
+          title={"Review"}
+          data={reviewTasks}
+          users={users}
+          />
 
         <TaskList
           title={"Complete"}
-          data={exampleData2}
+          data={completeTasks}
+          users={users}
         />
       </div>
     </>

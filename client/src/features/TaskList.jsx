@@ -1,6 +1,6 @@
 import { TaskCard } from "./TaskCard";
 
-export const TaskList = ({ title, data }) => {
+export const TaskList = ({ title, data, users }) => {
   return (
     <div className='task-category'>
       <h2>{title ? title : "Example Category"}</h2>
@@ -10,6 +10,7 @@ export const TaskList = ({ title, data }) => {
               <TaskCard
                 key={item.id}
                 taskData={item}
+                user={users[item.assignee_id] || "Unassigned"}
               />
             ))
           : ""}

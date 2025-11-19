@@ -1,0 +1,86 @@
+/* Page container */
+.create-task-page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: system-ui, sans-serif;
+  color: #333;
+}
+
+/* Title */
+.create-task-page h1 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+/* Form wrapper */
+.create-task-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 24px;
+  border-radius: 10px;
+}
+
+/* Label */
+.create-task-page label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+/* Input, textarea, select */
+.create-task-page input,
+.create-task-page select,
+.create-task-page textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  color: #333;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.create-task-page input:focus,
+.create-task-page select:focus,
+.create-task-page textarea:focus {
+  outline: none;
+  border-color: #999;
+  background: #fff;
+}
+
+/* Textarea adjustments */
+.create-task-page textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Button row */
+.create-task-page .justify-apart {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* Buttons */
+.create-task-page button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #eee;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.create-task-page button:hover {
+  background: #e2e2e2;
+  border-color: #bbb;
+}
