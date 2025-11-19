@@ -152,3 +152,28 @@ h1 {
     }
   }
 }
+
+.add-task-button{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.add-task-button img{
+  width: 50%;   
+  height: 50%;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-task-button img:hover{
+  transform: scale(1.08);
+}

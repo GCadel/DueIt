@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import { TaskCard } from "../features/TaskCard";
 import { TaskList } from "../features/TaskList";
+import PlusImage from "../assets/plus.png"
 
 export const TasksPage = () => {
 
@@ -45,6 +47,9 @@ export const TasksPage = () => {
           title={"Complete"}
           data={exampleData2}
         />
+      </div>
+      <div className="add-task-button">
+        <Link to="/create-task"><img src={PlusImage} alt="plus sign"></img></Link>
       </div>
     </>
   );
