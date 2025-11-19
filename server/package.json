@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "reset": "node --env-file=config/.env.local config/reset.js",
-    "start": "npm run reset && nodemon --env-file=config/.env.local server.js"
+    "start": "nodemon --env-file=config/.env.local server.js"
   },
   "author": "",
   "license": "ISC",
