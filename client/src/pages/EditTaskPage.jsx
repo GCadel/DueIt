@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { TextField } from "../shared/TextField";
 import "../css/CreateTaskPage.css";
 import CategoriesAPI from "../services/CategoriesAPI";
 import TasksAPI from "../services/TasksAPI";
 
-export const CreateTaskPage = () => {
-  const navigation = useNavigate();
+export const EditTaskPage = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
   const [taskDetails, setTaskDetails] = useState({
     name: "",
     category: "",
@@ -17,13 +18,29 @@ export const CreateTaskPage = () => {
     status_id: "1",
     help_wanted: false,
   });
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await TasksAPI.createTask(taskDetails);
+
+  useEffect(() => {
+    const fetchTaskData = async () => {
+      const taskData = await TasksAPI.getTaskById(id);
+      setTaskDetails((prev) => ({
+        ...prev,
+        ...taskData,
+        status_id: taskData.status_id ?? prev.status_id,
+      }));
+    };
+
+    fetchTaskData();
+  }, [id]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setTaskDetails((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleInputChange = (newValue) => {
-    setTaskDetails({ ...taskDetails, ...newValue });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await TasksAPI.updateTask(taskDetails, taskDetails.status_id);
+    navigate("/tasks");
   };
 
   const [categories, setCategories] = useState([]);
@@ -40,15 +57,15 @@ export const CreateTaskPage = () => {
 
   return (
     <div className="create-task-page">
-      <h1>Create Task</h1>
+      <h1>Edit Task</h1>
       <div>
         <form onSubmit={handleSubmit}>
           <TextField
             value={taskDetails.name}
-            label={"Name"}
-            fieldName={"name"}
+            label="Name"
+            fieldName="name"
             required={true}
-            handleChange={(e) => handleInputChange({ name: e.target.value })}
+            handleChange={handleInputChange}
           />
           <div>
             <label htmlFor="category">
@@ -56,7 +73,7 @@ export const CreateTaskPage = () => {
             </label>
             <select
               name="category"
-              onChange={(e) => handleInputChange({ category: e.target.value })}
+              onChange={handleInputChange}
               value={taskDetails.category}
               required
             >
@@ -72,9 +89,7 @@ export const CreateTaskPage = () => {
             <label htmlFor="description">Description</label>
             <textarea
               name="description"
-              onChange={(e) =>
-                handleInputChange({ description: e.target.value })
-              }
+              onChange={handleInputChange}
               value={taskDetails.description}
             ></textarea>
           </div>
@@ -84,12 +99,14 @@ export const CreateTaskPage = () => {
               type="date"
               name="date"
               value={taskDetails.dueDate}
-              onChange={(e) => handleInputChange({ dueDate: e.target.value })}
+              onChange={handleInputChange}
             />
           </div>
           <div className="justify-apart">
-            <button onClick={() => navigation(-1)}>Cancel</button>
-            <button>Create Task</button>
+            <button type="button" onClick={() => navigate(-1)}>
+              Cancel
+            </button>
+            <button type="submit">Save Task</button>
           </div>
         </form>
       </div>

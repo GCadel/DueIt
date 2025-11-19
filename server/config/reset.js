@@ -2,9 +2,9 @@ import { pool } from './database.js'
 import readline from 'readline/promises'
 import { stdin as input, stdout as output } from 'process'
 
-const rl = readline.createInterface( { input, output });
+const rl = readline.createInterface({ input, output });
 
-const ask = async(question) => {
+const ask = async (question) => {
     const answer = await rl.question(question)
     return answer
 }
@@ -53,6 +53,7 @@ const createDatabaseTables = async () => {
             "board_id" INTEGER NOT NULL,
             "assignee_id" INTEGER,
             "status_id" INTEGER NOT NULL,
+            "help_wanted" BOOLEAN DEFAULT FALSE NOT NULL,
             PRIMARY KEY("id")
         );
 
@@ -180,11 +181,11 @@ const seedDatabase = async () => {
         ('Review'),
         ('Complete');
 
-    INSERT INTO tasks (name, description, created_at, board_id, assignee_id, status_id) VALUES
-        ('Create wireframes', 'Wireframes for homepage', NOW(), 1, 3, 1),
-        ('Setup backend DB', 'Configure PostgreSQL', NOW(), 2, 2, 2),
-        ('Login screen', 'Implement login screen', NOW(), 3, 3, 1),
-        ('Push notifications', 'Add push notifications', NOW(), 4, 3, 1);
+    INSERT INTO tasks (name, description, created_at, board_id, assignee_id, status_id, help_wanted) VALUES
+        ('Create wireframes', 'Wireframes for homepage', NOW(), 1, 3, 1, FALSE),
+        ('Setup backend DB', 'Configure PostgreSQL', NOW(), 2, 2, 2, FALSE),
+        ('Login screen', 'Implement login screen', NOW(), 3, 3, 1, TRUE),
+        ('Push notifications', 'Add push notifications', NOW(), 4, 3, 1, FALSE);
 
     INSERT INTO categories (name, description) VALUES
         ('Design', 'Tasks related to design'),
@@ -210,7 +211,7 @@ const seedDatabase = async () => {
     } catch (err) {
         console.error('⚠️ error seeding tables', err)
     }
-    
+
 }
 
 const addForeignKeys = async () => {
@@ -314,7 +315,7 @@ const resetDatabase = async () => {
     await addForeignKeys();
 
     await pool.end();
-    
+
 }
 
 resetDatabase()

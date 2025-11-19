@@ -14,23 +14,20 @@ export const TaskCard = ({ taskData, user }) => {
       {...attributes}
       style={{ transform: CSS.Translate.toString(transform) }}
     >
-      <CardContent
-        taskData={taskData}
-        user={user}
-      />
+      <CardContent taskData={taskData} user={user} />
     </div>
   );
 };
 
 const CardContent = ({ taskData, user }) => {
   return (
-    <div className='task-card'>
+    <div className="task-card">
       <h3>{taskData.name ? taskData.name : "Example Task"}</h3>
-      <div className='justify-apart'>
-        <div className='user-chip'>
+      <div className="justify-apart">
+        <div className="user-chip">
           {user !== "Unassigned" ? (
-            <div className=' justify-apart'>
-              <div className='avatar'>{user.charAt(0).toUpperCase()}</div>
+            <div className="justify-apart">
+              <div className="avatar">{user.charAt(0).toUpperCase()}</div>
               <p>{user}</p>
             </div>
           ) : (
@@ -38,11 +35,17 @@ const CardContent = ({ taskData, user }) => {
           )}
         </div>
 
-        {taskData.category ? (
-          <div className='category-chip'>taskData.category</div>
-        ) : null}
+        <div className="right-side">
+          {taskData.category ? (
+            <div className="category-chip">{taskData.category}</div>
+          ) : null}
+
+          {taskData.help_wanted ? (
+            <div className="help-wanted-text">Help Wanted</div>
+          ) : null}
+        </div>
       </div>
-      <div className='task-update-date'>
+      <div className="task-update-date">
         <em>
           Last update:{" "}
           {taskData.last_update
