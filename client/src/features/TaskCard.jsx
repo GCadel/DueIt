@@ -1,16 +1,16 @@
-export const TaskCard = ({ taskData }) => {
+export const TaskCard = ({ taskData, user }) => {
   if (taskData) {
     return (
       <div className='task-card'>
-        <h3>{taskData.title ? taskData.title : "Example Task"}</h3>
+        <h3>{taskData.name ? taskData.name : "Example Task"}</h3>
         <div className='justify-apart'>
           <div className='user-chip'>
-            {taskData.user ? (
+            {user !== "Unassigned" ? (
               <div className=' justify-apart'>
                 <div className='avatar'>
-                  {String(taskData.user).charAt(0).toUpperCase()}
+                  {user.charAt(0).toUpperCase()}
                 </div>
-                <p>{taskData.user}</p>
+                <p>{user}</p>
               </div>
             ) : (
               <span style={{ color: "red" }}>Unassigned</span>
