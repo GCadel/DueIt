@@ -1,17 +1,17 @@
 import { pool } from "../config/database.js";
 
 const getTasks = async (req, res) => {
-    try{
-        const selectQuery = `
+  try {
+    const selectQuery = `
             SELECT * 
             FROM tasks
-        `
-        const results = await pool.query(selectQuery);
-        res.status(200).json(results.rows);
-    } catch (err) {
-        res.status(409).json({ error: err.message })
-    }
-}
+        `;
+    const results = await pool.query(selectQuery);
+    res.status(200).json(results.rows);
+  } catch (err) {
+    res.status(409).json({ error: err.message });
+  }
+};
 
 const getTaskById = async (req, res) => {
   const taskId = req.params.id;
@@ -28,17 +28,17 @@ const getTaskById = async (req, res) => {
 };
 
 const deleteTaskById = async (req, res) => {
-    const taskId = req.params.id;
-    try {
-      const selectQuery = `
+  const taskId = req.params.id;
+  try {
+    const selectQuery = `
       DELETE
       FROM tasks
       WHERE id=$1`;
-      const results = await pool.query(selectQuery, [taskId]);
-      res.status(200).json(results.rows);
-    } catch (err) {
-      res.status(409).json({ error: err.message });
-    }
+    const results = await pool.query(selectQuery, [taskId]);
+    res.status(200).json(results.rows);
+  } catch (err) {
+    res.status(409).json({ error: err.message });
+  }
 };
 
 const createTask = async (req, res) => {
@@ -53,7 +53,7 @@ const createTask = async (req, res) => {
       data.description,
       data.board_id,
       data.assignee_id,
-      data.status_id
+      data.status_id,
     ];
 
     const result = await pool.query(insertQuery, values);
@@ -64,7 +64,7 @@ const createTask = async (req, res) => {
 };
 
 const updateTask = async (req, res) => {
-  const data = req.params.id;
+  const data = req.body;
   console.log(data);
   try {
     const updateQuery = `
@@ -95,9 +95,9 @@ const updateTask = async (req, res) => {
 };
 
 export default {
-    getTasks,
-    getTaskById,
-    deleteTaskById,
-    createTask,
-    updateTask,
+  getTasks,
+  getTaskById,
+  deleteTaskById,
+  createTask,
+  updateTask,
 };
