@@ -4,7 +4,7 @@
   "description": "",
   "type":"module",
   "main": "server.js",
-"scripts": {
+  "scripts": {
     "reset": "node --env-file=config/.env.local config/reset.js",
     "start": "nodemon --env-file=config/.env.local server.js"
   },

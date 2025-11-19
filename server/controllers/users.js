@@ -90,10 +90,25 @@ const updateUser = async (req, res) => {
   }
 };
 
+const getTaskByUserId = async (req, res) => {
+  const userId = req.params.userId;
+  try {
+    const selectQuery = `
+        SELECT id, name, description, created_at, board_id, assignee_id, status_id 
+        FROM tasks
+        WHERE assignee_id=$1`;
+    const results = await pool.query(selectQuery, [userId]);
+    res.status(200).json(results.rows);
+  } catch (err) {
+    res.status(409).json({ error: err.message });
+  }
+};
+
 export default {
   getUsers,
   getUserById,
   deleteUserById,
   createUser,
   updateUser,
+  getTaskByUserId,
 };

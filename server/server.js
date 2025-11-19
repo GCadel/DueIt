@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import UserRouter from "./routes/users.js";
+import TaskRouter from "./routes/tasks.js"
 import ProjectsRouter from "./routes/projects.js";
 import CategoriesRouter from "./routes/categories.js";
 import RolesRouter from "./routes/roles.js";
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/user", UserRouter);
+app.use("/tasks", TaskRouter);
 app.use("/projects", ProjectsRouter);
 app.use("/categories", CategoriesRouter);
 app.use("/roles", RolesRouter);
