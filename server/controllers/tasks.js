@@ -13,36 +13,14 @@ const getTasks = async (req, res) => {
     }
 }
 
-const getTasksFormated = async (req, res) => {
-    try{
-        const selectQuery = `
-            SELECT 
-                t.id,
-                t.name AS title,
-                TO_CHAR(t.created_at, 'Dy Mon DD YYYY') AS last_update,
-                c.name AS category,
-                u.first_name AS user
-            FROM tasks t
-            LEFT JOIN users u ON t.assignee_id = u.id
-            LEFT JOIN task_categories tc ON t.id = tc.task_id
-            LEFT JOIN categories c ON tc.category_id = c.id
-            ORDER BY t.id;
-        `
-        const results = await pool.query(selectQuery);
-        res.status(200).json(results.rows);
-    } catch (err) {
-        res.status(409).json({ error: err.message })
-    }
-}
-
-const getTaskByUserId = async (req, res) => {
-  const userId = req.params.userId;
+const getTaskById = async (req, res) => {
+  const taskId = req.params.taskId;
   try {
     const selectQuery = `
-        SELECT id, name, description, created_at, board_id, assignee_id, status_id 
-        FROM tasks
-        WHERE assignee_id=$1`;
-    const results = await pool.query(selectQuery, [userId]);
+    SELECT id, name, description, created_at, board_id, assignee_id, status_id 
+    FROM tasks
+    WHERE id=$1`;
+    const results = await pool.query(selectQuery, [taskId]);
     res.status(200).json(results.rows);
   } catch (err) {
     res.status(409).json({ error: err.message });
@@ -50,7 +28,7 @@ const getTaskByUserId = async (req, res) => {
 };
 
 const deleteTaskById = async (req, res) => {
-    const taskId = req.body.id;
+    const taskId = req.params.id;
     try {
       const selectQuery = `
       DELETE
@@ -68,7 +46,7 @@ const createTask = async (req, res) => {
   console.log(data);
   try {
     const insertQuery = `
-    INSERT INTO tasks(name, description, created_at, board_id, assignee_id, status_id )
+    INSERT INTO tasks(name, description, created_at, board_id, assignee_id, status_id)
     VALUES($1, $2, $3, $4, $5, $6)`;
     const values = [
       data.name,
@@ -87,7 +65,7 @@ const createTask = async (req, res) => {
 };
 
 const updateTask = async (req, res) => {
-  const data = req.body;
+  const data = req.params.id;
   console.log(data);
   try {
     const updateQuery = `
@@ -119,8 +97,7 @@ const updateTask = async (req, res) => {
 
 export default {
     getTasks,
-    getTaskByUserId,
-    getTasksFormated,
+    getTaskById,
     deleteTaskById,
     createTask,
     updateTask,

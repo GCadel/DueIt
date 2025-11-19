@@ -5,6 +5,9 @@ import UserRouter from "./routes/users.js";
 import TaskRouter from "./routes/tasks.js"
 import ProjectsRouter from "./routes/projects.js";
 import CategoriesRouter from "./routes/categories.js";
+import RolesRouter from "./routes/roles.js";
+import PermissionsRouter from "./routes/permissions.js";
+import RolePermissionsRouter from "./routes/role_permissions.js";
 import StatusRouter from "./routes/status.js";
 
 dotenv.config();
@@ -16,6 +19,9 @@ app.use("/user", UserRouter);
 app.use("/tasks", TaskRouter);
 app.use("/projects", ProjectsRouter);
 app.use("/categories", CategoriesRouter);
+app.use("/roles", RolesRouter);
+app.use("/permissions", PermissionsRouter);
+app.use("/role_permissions", RolePermissionsRouter);
 app.use("/status", StatusRouter);
 
 const PORT = process.env.PORT || 3000;
