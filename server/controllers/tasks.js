@@ -46,12 +46,11 @@ const createTask = async (req, res) => {
   console.log(data);
   try {
     const insertQuery = `
-    INSERT INTO tasks(name, description, created_at, board_id, assignee_id, status_id)
-    VALUES($1, $2, $3, $4, $5, $6)`;
+    INSERT INTO tasks(name, description, board_id, assignee_id, status_id)
+    VALUES($1, $2, $3, $4, $5)`;
     const values = [
       data.name,
       data.description,
-      data.created_at,
       data.board_id,
       data.assignee_id,
       data.status_id

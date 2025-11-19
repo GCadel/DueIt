@@ -68,13 +68,14 @@ authorized users.
 
 <!-- [gif goes here] -->
 
-### Task Creation
+### ✅Task Creation
 
 A user is able to create a task that anyone in their board team can view. Any of
 the members can assign themselves to the task, as well as move the task into
 different lifetime stages (e.g. New, In Progress, Complete).
 
 <!-- [gif goes here] -->
+<img src='milestones/dueit-task-creation.gif' title='DueIt Task Creation' width='' alt='DueIt Task Creation'>
 
 ### Quick Action Menu
 

@@ -1,33 +1,53 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { TextField } from "../shared/TextField";
+import "../css/CreateTaskPage.css"
+import CategoriesAPI from "../services/CategoriesAPI";
+import TasksAPI from "../services/TasksAPI";
 
 export const CreateTaskPage = () => {
   const navigation = useNavigate();
   const [taskDetails, setTaskDetails] = useState({
-    title: "",
+    name: "",
     category: "",
     description: "",
-    dueDate: "",
+    dueDate: "2026-10-31",
+    board_id: "1",
+    assignee_id: "1",
+    status_id: "1"
   });
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await TasksAPI.createTask(taskDetails)
   };
 
   const handleInputChange = (newValue) => {
     setTaskDetails({ ...taskDetails, ...newValue });
   };
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() =>{
+    const fetchCategories = async () => {
+        const data = await CategoriesAPI.getAllCategories();
+        console.log("Fetched categories:", data)
+        setCategories(data)
+    }
+
+    fetchCategories();
+  }, []);
+
   return (
-    <>
+    <div className="create-task-page">
       <h1>Create Task</h1>
       <div>
         <form onSubmit={handleSubmit}>
           <TextField
-            value={taskDetails.title}
-            label={"Title"}
-            fieldName={"title"}
+            value={taskDetails.name}
+            label={"Name"}
+            fieldName={"name"}
             required={true}
-            handleChange={(e) => handleInputChange({ title: e.target.value })}
+            handleChange={(e) => handleInputChange({ name: e.target.value })}
           />
           <div>
             <label htmlFor='category'>
@@ -40,8 +60,11 @@ export const CreateTaskPage = () => {
               required
             >
               <option value=''>Choose a category</option>
-              <option value='option-1'>Option 1</option>
-              <option value='option-2'>Option 2</option>
+              {categories.map((cat) => (
+                <option key={cat.id} value={cat.id}>
+                  {cat.name}
+                </option>
+              ))}
             </select>
           </div>
           <div>
@@ -69,6 +92,6 @@ export const CreateTaskPage = () => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
