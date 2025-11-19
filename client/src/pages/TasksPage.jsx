@@ -4,23 +4,6 @@ import { TaskList } from "../features/TaskList";
 
 export const TasksPage = () => {
 
-  const [allTasks, setAllTasks] = useState([]);
-
-  useEffect(()=>{
-    const getTasks = async () =>{
-      try{
-        const response = await fetch('http://localhost:3000/tasks/formated')
-        const data = await response.json();
-        console.log(data);
-        console.log(exampleData1)
-        setAllTasks(data)
-      } catch (error) {
-        console.error("Error fetching tasks: ", error)
-      }
-    };
-    getTasks();
-  }, [])
-
   const exampleData1 = [
     {
       id: 2,
@@ -36,13 +19,6 @@ export const TasksPage = () => {
       category: "category b",
       user: "Mike",
     },
-    {
-      id: 4,
-      title: "Task 04",
-      last_update: new Date().toDateString(),
-      category: "category c",
-      user: "Habibi",
-    }
   ];
 
   const exampleData2 = [
@@ -60,7 +36,7 @@ export const TasksPage = () => {
       <div className='task-categories-grid'>
         <TaskList
           title={"Backlog"}
-          data={allTasks}
+          data={exampleData1}
         />
         <TaskList title={"In Progress"} />
         <TaskList title={"Review"} />
