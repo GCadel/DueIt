@@ -111,7 +111,7 @@ h1 {
   background-color: #ffffff;
   outline: 2px solid transparent;
   padding: 1rem;
-  cursor: pointer;
+  cursor: grab;
   border-radius: 10px;
   width: 96%;
   margin: auto;
@@ -120,6 +120,10 @@ h1 {
     margin-bottom: 10px;
     text-align: center;
   }
+}
+
+.task-card:active {
+  cursor: grabbing;
 }
 
 .task-card:hover {

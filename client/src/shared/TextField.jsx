@@ -18,7 +18,7 @@ export const TextField = ({
         placeholder={placeholder}
         onChange={handleChange}
         name={fieldName}
-        value={value ?? ""}
+        value={value}
       />
     </div>
   );
