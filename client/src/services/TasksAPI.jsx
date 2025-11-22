@@ -21,6 +21,15 @@ const createTask = async (taskData) => {
   window.location = "/tasks";
 };
 
+const getTaskById = async (id) => {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  if (!response.ok) throw new Error(`Failed to fetch task ${id}`);
+  return await response.json();
+};
+
 const updateTask = async (taskData, listId) => {
   const options = {
     method: "PATCH",
@@ -36,5 +45,6 @@ const updateTask = async (taskData, listId) => {
 export default {
   getAllTasks,
   createTask,
+  getTaskById,
   updateTask,
 };

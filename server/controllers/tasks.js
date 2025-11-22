@@ -17,7 +17,7 @@ const getTaskById = async (req, res) => {
   const taskId = req.params.id;
   try {
     const selectQuery = `
-    SELECT id, name, description, created_at, board_id, assignee_id, status_id 
+    SELECT id, name, description, created_at, board_id, assignee_id, status_id, help_wanted 
     FROM tasks
     WHERE id=$1`;
     const results = await pool.query(selectQuery, [taskId]);
@@ -46,14 +46,15 @@ const createTask = async (req, res) => {
   console.log(data);
   try {
     const insertQuery = `
-    INSERT INTO tasks(name, description, board_id, assignee_id, status_id)
-    VALUES($1, $2, $3, $4, $5)`;
+    INSERT INTO tasks(name, description, board_id, assignee_id, status_id, help_wanted)
+    VALUES($1, $2, $3, $4, $5, $6)`;
     const values = [
       data.name,
       data.description,
       data.board_id,
       data.assignee_id,
       data.status_id,
+      data.help_wanted
     ];
 
     const result = await pool.query(insertQuery, values);
@@ -75,8 +76,9 @@ const updateTask = async (req, res) => {
       created_at=$3, 
       board_id=$4, 
       assignee_id=$5,
-      status_id = $6
-    WHERE id=$7`;
+      status_id=$6,
+      help_wanted=$7
+    WHERE id=$8`;
     const values = [
       data.name,
       data.description,
@@ -84,6 +86,7 @@ const updateTask = async (req, res) => {
       data.board_id,
       data.assignee_id,
       data.status_id,
+      data.help_wanted,
       data.id,
     ];
 

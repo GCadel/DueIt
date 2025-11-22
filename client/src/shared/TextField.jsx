@@ -8,7 +8,7 @@ export const TextField = ({
   required,
 }) => {
   return (
-    <div className='textfield'>
+    <div className="textfield">
       <label htmlFor={fieldName}>
         {label}
         {required ? <span style={{ color: "red" }}>*</span> : ""}
@@ -17,6 +17,7 @@ export const TextField = ({
         type={inputType ? inputType : "text"}
         placeholder={placeholder}
         onChange={handleChange}
+        name={fieldName}
         value={value}
       />
     </div>
