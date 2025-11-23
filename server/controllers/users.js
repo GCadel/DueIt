@@ -1,9 +1,10 @@
 import { pool } from "../config/database.js";
+import bcrypt from "bcrypt";
 
 const getUsers = async (req, res) => {
   try {
     const selectQuery = `
-    SELECT id,first_name, last_name, email, role_id 
+    SELECT id,first_name, last_name, email, role_id, password_hash
     FROM users 
     ORDER BY id ASC`;
     const results = await pool.query(selectQuery);
@@ -42,24 +43,31 @@ const deleteUserById = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
+  console.log(req.body);
   const data = req.body;
-  try {
-    const insertQuery = `
+  bcrypt.hash(req.body.password_hash, 10, async (err, hash) => {
+    if (err) {
+      console.error(err);
+      res.status(409).json({ error: err.message });
+    }
+    try {
+      const insertQuery = `
     INSERT INTO users(first_name, last_name, email, password_hash, role_id)
     VALUES($1, $2, $3, $4, $5)`;
-    const values = [
-      data.first_name,
-      data.last_name,
-      data.email,
-      data.password_hash,
-      data.role_id,
-    ];
+      const values = [
+        data.first_name,
+        data.last_name,
+        data.email,
+        hash,
+        data.role_id,
+      ];
 
-    const result = await pool.query(insertQuery, values);
-    res.status(200).json(result.rows);
-  } catch (err) {
-    res.status(409).json({ error: err.message });
-  }
+      const result = await pool.query(insertQuery, values);
+      res.status(200).json(result.rows);
+    } catch (err) {
+      res.status(409).json({ error: err.message });
+    }
+  });
 };
 
 const updateUser = async (req, res) => {
