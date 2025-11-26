@@ -9,6 +9,5 @@ router.get("/:userId/tasks", UserController.getTaskByUserId);
 router.delete("/delete", UserController.deleteUserById);
 router.post("/create", UserController.createUser);
 router.patch("/update", UserController.updateUser);
-router.post("/login", UserController.loginUser);
 
 export default router;

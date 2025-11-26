@@ -112,28 +112,6 @@ const getTaskByUserId = async (req, res) => {
   }
 };
 
-const loginUser = async (req, res) => {
-  const userEmail = req.body.email;
-  const userPass = req.body.password_hash;
-  try {
-    const selectQuery = `
-    SELECT *
-    FROM users
-    WHERE email=$1
-    `;
-    const results = await pool.query(selectQuery, [userEmail]);
-    const user = results.rows[0];
-    if (user && (await bcrypt.compare(userPass, user.password_hash))) {
-      res.status(200).json({ message: "Valid", result: results.rows[0] });
-      // Create a token instead
-    } else {
-      res.status(401).json({ message: "Email or password invalid" });
-    }
-  } catch (error) {
-    res.status(409).json({ error: error.message });
-  }
-};
-
 export default {
   getUsers,
   getUserById,
@@ -141,5 +119,4 @@ export default {
   createUser,
   updateUser,
   getTaskByUserId,
-  loginUser,
 };
