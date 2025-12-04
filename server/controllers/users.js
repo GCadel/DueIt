@@ -1,8 +1,21 @@
 import { pool } from "../config/database.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const getUsers = async (req, res) => {
   try {
+    if (!req.headers.authorization) {
+      throw new Error("Please login");
+    }
+    const bearerToken = req.headers.authorization.split(" ");
+    if (bearerToken[0] !== "Bearer" || bearerToken[1] === "undefined") {
+      throw new Error("Unauthorized");
+    }
+    const token = bearerToken[1];
+
+    // Verify token (throws error if token is invalid)
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+
     const selectQuery = `
     SELECT id,first_name, last_name, email, role_id, password_hash
     FROM users 
