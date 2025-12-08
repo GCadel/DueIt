@@ -9,10 +9,25 @@ import RolesRouter from "./routes/roles.js";
 import PermissionsRouter from "./routes/permissions.js";
 import RolePermissionsRouter from "./routes/role_permissions.js";
 import StatusRouter from "./routes/status.js";
+import AuthRouter from "./routes/auth.js";
+import passport from "passport";
+import session from "express-session";
 import BoardsRouter from "./routes/boards.js";
 
 dotenv.config();
 const app = express();
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    cookie: {},
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(cors());
 app.use(express.json());
 
@@ -24,6 +39,7 @@ app.use("/roles", RolesRouter);
 app.use("/permissions", PermissionsRouter);
 app.use("/role_permissions", RolePermissionsRouter);
 app.use("/status", StatusRouter);
+app.use("/auth", AuthRouter);
 app.use("/boards", BoardsRouter);
 
 const PORT = process.env.PORT || 3000;
