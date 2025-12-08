@@ -12,6 +12,7 @@ import StatusRouter from "./routes/status.js";
 import AuthRouter from "./routes/auth.js";
 import passport from "passport";
 import session from "express-session";
+import BoardsRouter from "./routes/boards.js";
 
 dotenv.config();
 const app = express();
@@ -39,6 +40,7 @@ app.use("/permissions", PermissionsRouter);
 app.use("/role_permissions", RolePermissionsRouter);
 app.use("/status", StatusRouter);
 app.use("/auth", AuthRouter);
+app.use("/boards", BoardsRouter);
 
 const PORT = process.env.PORT || 3000;
 
