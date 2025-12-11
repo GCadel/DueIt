@@ -1,4 +1,5 @@
 import * as boardRepository from "../repositories/board.repository.js";
+import { NotFoundError, RequiredFieldError } from "../errors/index.js";
 
 export async function getAllBoards() {
   return boardRepository.findAll();
@@ -7,29 +8,23 @@ export async function getAllBoards() {
 export async function getBoardById(id) {
   const board = await boardRepository.findById(id);
   if (!board) {
-    const err = new Error("Board not found");
-    err.status = 404;
-    throw err;
+    throw new NotFoundError("Board not found");
   }
   return board;
 }
 
 export async function createBoard(data) {
   if (!data.project_id) {
-    const err = new Error("Project ID is required");
-    err.status = 400;
-    throw err;
+    throw new RequiredFieldError("Project ID is required");
   }
-
   return boardRepository.create(data);
 }
 
 export async function updateBoard(id, data) {
-  await getBoardById(id);
-  if (!data.project_id) {
-    const err = new Error("Project ID is required");
-    err.status = 400;
-    throw err;
+  const original = await getBoardById(id);
+  const modified = { ...original, ...data };
+  if (!modified.project_id) {
+    throw new RequiredFieldError("Project ID is required");
   }
   return boardRepository.update(id, data);
 }
