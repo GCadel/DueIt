@@ -6,13 +6,19 @@ export async function getAllBoards() {
 
 export async function getBoardById(id) {
   const board = await boardRepository.findById(id);
-  if (!board) throw new Error("Board not found");
+  if (!board) {
+    const err = new Error("Board not found");
+    err.status = 404;
+    throw err;
+  }
   return board;
 }
 
 export async function createBoard(data) {
   if (!data.project_id) {
-    throw new Error("Project ID is required");
+    const err = new Error("Project ID is required");
+    err.status = 400;
+    throw err;
   }
 
   return boardRepository.create(data);
@@ -20,6 +26,11 @@ export async function createBoard(data) {
 
 export async function updateBoard(id, data) {
   await getBoardById(id);
+  if (!data.project_id) {
+    const err = new Error("Project ID is required");
+    err.status = 400;
+    throw err;
+  }
   return boardRepository.update(id, data);
 }
 
