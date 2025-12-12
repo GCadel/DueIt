@@ -12,7 +12,7 @@ import StatusRouter from "./routes/status.js";
 import AuthRouter from "./routes/auth.js";
 import passport from "passport";
 import session from "express-session";
-import BoardsRouter from "./routes/boards.js";
+import BoardsRouter from "./routes/board.route.js";
 
 dotenv.config();
 const app = express();
@@ -41,6 +41,18 @@ app.use("/role_permissions", RolePermissionsRouter);
 app.use("/status", StatusRouter);
 app.use("/auth", AuthRouter);
 app.use("/boards", BoardsRouter);
+
+// Not found fallback
+app.use((req, res) => {
+  res.status(404).json({ error: "Not found" });
+});
+
+// Error handling
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  const status = err.status || 500;
+  res.status(status).json({ error: err.message });
+});
 
 const PORT = process.env.PORT || 3000;
 
