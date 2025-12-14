@@ -8,7 +8,7 @@ import CategoriesRouter from "./routes/categories.js";
 import RolesRouter from "./routes/roles.js";
 import PermissionsRouter from "./routes/permissions.js";
 import RolePermissionsRouter from "./routes/role_permissions.js";
-import StatusRouter from "./routes/status.js";
+import StatusRouter from "./routes/status.route.js";
 import AuthRouter from "./routes/auth.js";
 import passport from "passport";
 import session from "express-session";
