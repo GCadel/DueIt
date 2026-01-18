@@ -1,11 +1,11 @@
 import express from "express";
-import StatusController from "../controllers/status.js";
+import * as StatusController from "../controllers/status.controller.js";
 
 const router = express.Router();
 
-router.get("/", StatusController.getStatus);
+router.get("/", StatusController.getAllStatuses);
 router.get("/:id", StatusController.getStatusById);
-router.delete("/:id", StatusController.deleteStatusById);
+router.delete("/:id", StatusController.deleteStatus);
 router.post("/", StatusController.createStatus);
 router.patch("/:id", StatusController.updateStatus);
 
